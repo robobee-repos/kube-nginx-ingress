@@ -1,0 +1,13 @@
+/*
+ * Mandatory:
+ * 
+ * vars.nginxIngressController.image.name
+ * vars.nginxIngressController.image.version
+ *
+ */
+
+Dockerfile(parent, vars) ::= <<
+FROM <vars.nginxIngressController.image.name>:<vars.nginxIngressController.image.version>
+LABEL maintainer "Erwin Mueller \<erwin.mueller@deventm.com>"
+
+>>

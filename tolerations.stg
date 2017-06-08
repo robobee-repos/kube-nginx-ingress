@@ -1,0 +1,19 @@
+/*
+ * Mandatory:
+ * 
+ * tolerations[].key
+ * tolerations[].effect
+ * tolerations[].value
+ */
+
+tolerations(parent, vars, tolerations) ::= <<
+<if(tolerations)>      tolerations:
+<tolerations:toleration();separator="\n"><endif>
+>>
+
+toleration(toleration) ::= <<
+      - effect: <toleration.effect>
+        key: <toleration.key>
+        operator: Equal<if(toleration.value)>
+        value: <toleration.value><endif>
+>>
