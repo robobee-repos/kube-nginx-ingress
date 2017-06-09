@@ -30,15 +30,8 @@ spec:
         prometheus.io/scrape: 'true'
     spec:
       terminationGracePeriodSeconds: 60
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: robobeerun.com/edge-router
-                operator: In
-                values:
-                - required
+      nodeSelector:
+        robobeerun.com/role: edge-router
       containers:
       - image: erwin82/nginx-ingress:master
         name: nginx-ingress-controller
