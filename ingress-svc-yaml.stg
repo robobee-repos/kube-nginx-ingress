@@ -4,7 +4,7 @@
 
 import "tolerations.stg"
 
-nginx-ingress-daemonset-yaml(parent, vars) ::= <<
+ingress-svc-yaml(parent, vars) ::= <<
 apiVersion: v1
 kind: Service
 metadata:
