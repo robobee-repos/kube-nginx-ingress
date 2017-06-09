@@ -49,9 +49,9 @@ spec:
           timeoutSeconds: 1
         ports:
         - containerPort: 80
-          hostPort: 80
+          name: http
         - containerPort: 443
-          hostPort: 443
+          name: https
         env:
           - name: POD_NAME
             valueFrom:
