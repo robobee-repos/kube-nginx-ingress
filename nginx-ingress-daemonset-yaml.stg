@@ -12,16 +12,19 @@ nginx-ingress-daemonset-yaml(parent, vars) ::= <<
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: nginx-ingress-lb
+  name: nginx-ingress-controller
   labels:
-    name: nginx-ingress-lb
+    name: nginx-ingress-controller
+    k8s-app: nginx-ingress-controller
     robobeerun.com/group: cluster-ingress
   namespace: kube-system
 spec:
   template:
     metadata:
       labels:
-        name: nginx-ingress-lb
+        name: nginx-ingress-controller
+        k8s-app: nginx-ingress-controller
+        robobeerun.com/group: cluster-ingress
       annotations:
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
@@ -29,7 +32,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - image: erwin82/nginx-ingress:master
-        name: nginx-ingress-lb
+        name: nginx-ingress-controller
         readinessProbe:
           httpGet:
             path: /healthz
@@ -59,6 +62,7 @@ spec:
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+        - --publish-service=$(POD_NAMESPACE)/nginx-ingress-lb
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 >>
