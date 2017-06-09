@@ -2,13 +2,13 @@
  * 
  */
 
-ingress-lb-svc-yaml(parent, vars) ::= <<
+ingress-svc-yaml(parent, vars) ::= <<
 apiVersion: v1
 kind: Service
 metadata: 
-  name: ingress-lb
+  name: ingress
   labels:
-    app: ingress-lb
+    app: ingress
   namespace: kube-system
 spec: 
   type: NodePort
