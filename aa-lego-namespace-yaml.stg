@@ -1,0 +1,13 @@
+/*
+*
+*/
+aa-lego-namespace-yaml(parent, vars) ::= <<
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: kube-lego
+  labels:
+    name: kube-lego
+    robobeerun.com/group: cluster-ingress
+
+>>
