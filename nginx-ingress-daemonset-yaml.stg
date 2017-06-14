@@ -9,6 +9,28 @@
 import "tolerations.stg"
 
 nginx-ingress-daemonset-yaml(parent, vars) ::= <<
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: kube-system
+  name: nginx
+  labels:
+    name: nginx-ingress-controller
+    k8s-app: nginx-ingress-controller
+    robobeerun.com/group: cluster-ingress
+data:
+  proxy-connect-timeout: "15"
+  proxy-read-timeout: "600"
+  proxy-send-timeout: "600"
+  hsts-include-subdomains: "false"
+  body-size: "64m"
+  server-name-hash-bucket-size: "256"
+
+---
+
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -64,6 +86,7 @@ spec:
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+        - --nginx-configmap=kube-system/nginx
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 >>
