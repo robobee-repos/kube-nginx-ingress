@@ -56,8 +56,8 @@ spec:
         robobeerun.com/group: cluster-ingress
     spec:
       containers:
-      - name: kube-lego
       - image: <vars.lego.image.name>:<vars.lego.image.version>
+        name: kube-lego
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
