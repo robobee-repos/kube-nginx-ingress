@@ -1,6 +1,6 @@
 /*
  * Mandatory:
- * 
+ *
  * vars.lego.email
  * vars.lego.url
  * vars.lego.image.name
@@ -9,9 +9,9 @@
  * vars.lego.limits.memory
  * vars.lego.requests.cpu
  * vars.lego.requests.memory
- * 
+ *
  * Optional:
- * 
+ *
  * vars.lego.tolerations[].key
  * vars.lego.tolerations[].effect
  * vars.lego.tolerations[].value
@@ -26,15 +26,13 @@ cc-lego-yaml(parent, vars) ::= <<
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: kube-lego
+  namespace: kube-ingress
   name: kube-lego
   labels:
     name: kube-lego
     robobeerun.com/group: cluster-ingress
 data:
-  # modify this to specify your address
   lego.email: "<vars.lego.email>"
-  # configure letsencrypt's production api
   lego.url: "<vars.lego.url>"
 
 ---
@@ -43,7 +41,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: kube-lego
-  namespace: kube-lego
+  namespace: kube-ingress
   labels:
     app: kube-lego
     robobeerun.com/group: cluster-ingress

@@ -9,7 +9,8 @@ metadata:
   name: ingress
   labels:
     app: ingress
-  namespace: kube-system
+    robobeerun.com/group: cluster-ingress
+  namespace: kube-ingress
 spec: 
   type: NodePort
   ports:
