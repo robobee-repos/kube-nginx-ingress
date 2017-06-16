@@ -102,7 +102,7 @@ spec:
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
-        - --configmap=kube-system/nginx
+        - --configmap=$(POD_NAMESPACE)/nginx
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 >>
