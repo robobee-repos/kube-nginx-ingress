@@ -1,6 +1,15 @@
 /*
+ * Mandatory:
+ *
+ * vars.nginxIngressController.image.name
+ * vars.nginxIngressController.image.version
+ * vars.nginxIngressController.limits.cpu
+ * vars.nginxIngressController.limits.memory
+ * vars.nginxIngressController.requests.cpu
+ * vars.nginxIngressController.requests.memory
+ *
  * Optional:
- * 
+ *
  * vars.nginxIngressController.tolerations[].key
  * vars.nginxIngressController.tolerations[].effect
  * vars.nginxIngressController.tolerations[].value
@@ -26,7 +35,7 @@ data:
   proxy-read-timeout: "600"
   proxy-send-timeout: "600"
   hsts-include-subdomains: "false"
-  proxy-body-size: "64m"
+  proxy-body-size: "4m"
   server-name-hash-bucket-size: "256"
 
 ---
@@ -55,8 +64,15 @@ spec:
       nodeSelector:
         robobeerun.com/role: edge-router
       containers:
-      - image: erwin82/nginx-ingress:master
+      - image: <vars.nginxIngressController.image.name>:<vars.nginxIngressController.image.version>
         name: nginx-ingress-controller
+        resources:
+          limits:
+            cpu: <vars.nginxIngressController.limits.cpu>
+            memory: <vars.nginxIngressController.limits.memory>
+          requests:
+            cpu: <vars.nginxIngressController.requests.cpu>
+            memory: <vars.nginxIngressController.requests.memory>
         readinessProbe:
           httpGet:
             path: /healthz
