@@ -36,7 +36,8 @@ data:
   proxy-send-timeout: "600"
   hsts-include-subdomains: "false"
   proxy-body-size: "4m"
-  server-name-hash-bucket-size: "256"
+  server-name-hash-bucket-size: "512"
+  server-name-hash-max-size: "2024"
 
 ---
 
