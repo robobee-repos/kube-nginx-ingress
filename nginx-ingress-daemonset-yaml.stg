@@ -9,7 +9,7 @@
  * vars.nginxIngressController.requests.memory
  *
  * Optional:
- *
+ * 
  * vars.nginxIngressController.tolerations[].key
  * vars.nginxIngressController.tolerations[].effect
  * vars.nginxIngressController.tolerations[].value
@@ -38,6 +38,7 @@ data:
   proxy-body-size: "64m"
   server-name-hash-bucket-size: "512"
   server-name-hash-max-size: "2024"
+  use-proxy-protocol: "true"
 
 ---
 
