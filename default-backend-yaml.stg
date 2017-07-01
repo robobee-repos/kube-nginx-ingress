@@ -7,6 +7,7 @@
  * vars.defaultHttpBackend.limits.memory
  * vars.defaultHttpBackend.requests.cpu
  * vars.defaultHttpBackend.requests.memory
+ * vars.ingress.allowOnMaster
  * 
  * Optional:
  * 

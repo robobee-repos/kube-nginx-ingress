@@ -1,5 +1,5 @@
 tolerationMaster(parent, vars) ::= <<
-<if(vars.nginxIngressController.allowOnMaster)>
+<if(vars.ingress.allowOnMaster)>
       tolerations:
       - effect: NoSchedule
         key: node.alpha.kubernetes.io/ismaster
@@ -20,7 +20,7 @@ tolerations(parent, vars, tolerations) ::= <<
 >>
 
 tolerationsHeader(parent, vars, tolerations) ::= <%
-<if(!vars.nginxIngressController.allowOnMaster&&tolerations)>
+<if(!vars.ingress.allowOnMaster&&tolerations)>
 tolerations:
 <endif>
 %>

@@ -9,6 +9,7 @@
  * vars.lego.limits.memory
  * vars.lego.requests.cpu
  * vars.lego.requests.memory
+ * vars.ingress.allowOnMaster
  * 
  * Optional:
  * 
