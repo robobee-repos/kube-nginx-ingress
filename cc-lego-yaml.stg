@@ -97,7 +97,7 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1
-affinitiesGroup(parent, vars)>
+<affinitiesGroup(parent, vars)>
 <tolerationMaster(parent, vars)>
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 

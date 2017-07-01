@@ -107,7 +107,7 @@ spec:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
         - --configmap=$(POD_NAMESPACE)/nginx
-affinitiesGroup(parent, vars)>
+<affinitiesGroup(parent, vars)>
 <tolerationMaster(parent, vars)>
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
