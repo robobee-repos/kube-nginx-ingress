@@ -16,6 +16,7 @@
  */
 
 import "tolerations.stg"
+import "affinities.stg"
 
 default-backend-yaml(parent, vars) ::= <<
 apiVersion: extensions/v1beta1
@@ -57,7 +58,9 @@ spec:
           requests:
             cpu: <vars.defaultHttpBackend.requests.cpu>
             memory: <vars.defaultHttpBackend.requests.memory>
-<tolerations(parent, vars, vars.defaultHttpBackend.tolerations)>
+affinitiesGroup(parent, vars)>
+<tolerationMaster(parent, vars)>
+<tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 ---
 

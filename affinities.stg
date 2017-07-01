@@ -1,0 +1,23 @@
+affinitiesGroup(parent, vars) ::= <<
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 10
+              preference:
+                matchExpressions:
+                - key: robobeerun.com/group
+                  operator: In
+                  values:
+                  - cluster-ingress
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: robobeerun.com/group
+                  operator: In
+                  values:
+                  - cluster-ingress
+              topologyKey: kubernetes.io/hostname
+>>

@@ -18,6 +18,7 @@
  */
 
 import "tolerations.stg"
+import "affinities.stg"
 
 cc-lego-yaml(parent, vars) ::= <<
 
@@ -95,6 +96,8 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           timeoutSeconds: 1
-<tolerations(parent, vars, vars.lego.tolerations)>
+affinitiesGroup(parent, vars)>
+<tolerationMaster(parent, vars)>
+<tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 >>

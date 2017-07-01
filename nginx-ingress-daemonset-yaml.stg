@@ -16,6 +16,7 @@
  */
 
 import "tolerations.stg"
+import "affinities.stg"
 
 nginx-ingress-daemonset-yaml(parent, vars) ::= <<
 
@@ -105,6 +106,8 @@ spec:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
         - --configmap=$(POD_NAMESPACE)/nginx
+affinitiesGroup(parent, vars)>
+<tolerationMaster(parent, vars)>
 <tolerations(parent, vars, vars.nginxIngressController.tolerations)>
 
 >>
