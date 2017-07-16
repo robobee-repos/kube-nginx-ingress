@@ -82,13 +82,15 @@ spec:
             path: /healthz
             port: 10254
             scheme: HTTP
+          timeoutSeconds: 5
         livenessProbe:
           httpGet:
             path: /healthz
             port: 10254
             scheme: HTTP
           initialDelaySeconds: 10
-          timeoutSeconds: 1
+          timeoutSeconds: 5
+          periodSeconds: 15
         ports:
         - containerPort: 80
           name: http
