@@ -19,7 +19,9 @@
  * vars.nginxIngressController.tolerations[].value
  */
 
-import "tolerations.stg"
+import "_affinities.stg"
+import "_resources.stg"
+import "_tolerations.stg"
 
 deployment-yaml(parent, vars) ::= <<
 apiVersion: extensions/v1beta1
