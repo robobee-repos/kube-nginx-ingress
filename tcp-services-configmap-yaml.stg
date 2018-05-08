@@ -6,7 +6,7 @@ tcp-services-configmap-yaml(parent, vars) ::= <<
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: udp-services
+  name: tcp-services
   namespace: ingress-nginx
   labels:
     app: ingress-nginx
