@@ -1,5 +1,7 @@
 /*
+ * Optional:
  * 
+ * vars.nginxIngressController.config.useProxyProtocol
  */
 
 configmap-yaml(parent, vars) ::= <<
@@ -13,5 +15,7 @@ metadata:
     kubernetes.io/cluster-service: "true"
     addonmanager.kubernetes.io/mode: Reconcile
     kubernetes.io/name: "ingress-nginx"
+data:
+  use-proxy-protocol: "<if(vars.nginxIngressController.config.useProxyProtocol)>true<else>false<endif>"
 
 >>
