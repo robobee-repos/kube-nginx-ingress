@@ -1,4 +1,8 @@
 /*
+ * Mandatory:
+ *
+ * vars.nginxIngressController.nodePort.http
+ * vars.nginxIngressController.nodePort.https
  * 
  */
 
@@ -20,10 +24,12 @@ spec:
     port: 80
     targetPort: 80
     protocol: TCP
+    nodePort: <vars.nginxIngressController.nodePort.http>
   - name: https
     port: 443
     targetPort: 443
     protocol: TCP
+    nodePort: <vars.nginxIngressController.nodePort.https>
   selector:
     app: ingress-nginx
 
