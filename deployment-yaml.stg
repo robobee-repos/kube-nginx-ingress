@@ -92,7 +92,7 @@ spec:
             timeoutSeconds: 1
           securityContext:
             runAsNonRoot: false
-<resourcesGroup(parent, vars, vars.defaultHttpBackend.limits, vars.defaultHttpBackend.requests)>
+  <resourcesGroup(parent, vars, vars.defaultHttpBackend.limits, vars.defaultHttpBackend.requests)>
 <tolerationMasterGroup(parent, vars, vars.defaultHttpBackend.allowOnMaster)>
 <tolerationsGroup(parent, vars, vars.defaultHttpBackend.tolerations, vars.defaultHttpBackend.allowOnMaster)>
 <affinitiesGroup(parent, vars, vars.defaultHttpBackend.affinity)>
