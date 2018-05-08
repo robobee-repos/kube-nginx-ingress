@@ -92,9 +92,9 @@ spec:
             timeoutSeconds: 1
           securityContext:
             runAsNonRoot: false
-  <resourcesGroup(parent, vars, vars.defaultHttpBackend.limits, vars.defaultHttpBackend.requests)>
-<tolerationMasterGroup(parent, vars, vars.defaultHttpBackend.allowOnMaster)>
-<tolerationsGroup(parent, vars, vars.defaultHttpBackend.tolerations, vars.defaultHttpBackend.allowOnMaster)>
-<affinitiesGroup(parent, vars, vars.defaultHttpBackend.affinity)>
+  <resourcesGroup(parent, vars, vars.nginxIngressController.limits, vars.nginxIngressController.requests)>
+<tolerationMasterGroup(parent, vars, vars.nginxIngressController.allowOnMaster)>
+<tolerationsGroup(parent, vars, vars.nginxIngressController.tolerations, vars.nginxIngressController.allowOnMaster)>
+<affinitiesGroup(parent, vars, vars.nginxIngressController.affinity)>
 
 >>
