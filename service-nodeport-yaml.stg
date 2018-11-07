@@ -13,10 +13,9 @@ metadata:
   name: ingress-nginx
   namespace: ingress-nginx
   labels:
-    app: ingress-nginx
-    kubernetes.io/cluster-service: "true"
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
     addonmanager.kubernetes.io/mode: Reconcile
-    kubernetes.io/name: "ingress-nginx"
 spec:
   type: NodePort
   ports:
@@ -31,6 +30,7 @@ spec:
     protocol: TCP
     nodePort: <vars.nginxIngressController.nodePort.https>
   selector:
-    app: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
 
 >>
