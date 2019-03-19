@@ -43,6 +43,7 @@ kind: Namespace
 metadata:
   name: ingress-nginx
   labels:
+    app.kubernetes.io/name: ingress-nginx    
     addonmanager.kubernetes.io/mode: EnsureExists
 
 ---
@@ -239,8 +240,8 @@ rules:
     resources:
       - configmaps
     resourceNames:
-      # Defaults to "\<election-id>-\<ingress-class>"
-      # Here: "\<ingress-controller-leader>-\<nginx>"
+      # Defaults to "<election-id>-<ingress-class>"
+      # Here: "<ingress-controller-leader>-<nginx>"
       # This has to be adapted if you change either parameter
       # when launching the nginx-ingress-controller.
       - "ingress-controller-leader-nginx"
@@ -299,7 +300,7 @@ subjects:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-ingress-controller
@@ -336,6 +337,7 @@ spec:
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx
             - --annotations-prefix=nginx.ingress.kubernetes.io
           securityContext:
+            allowPrivilegeEscalation: true
             capabilities:
               drop:
                 - ALL
