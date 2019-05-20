@@ -16,6 +16,7 @@ metadata:
   labels:
     app.kubernetes.io/name: ingress-nginx-monitoring
     app.kubernetes.io/part-of: ingress-nginx
+    addonmanager.kubernetes.io/mode: Reconcile
 spec:
   ports:
   - name: metrics
@@ -34,6 +35,10 @@ kind: ServiceMonitor
 metadata:
   name: ingress-nginx-monitoring
   namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx-monitoring
+    app.kubernetes.io/part-of: ingress-nginx
+    addonmanager.kubernetes.io/mode: Reconcile
 spec:
   selector:
     matchLabels:
@@ -48,6 +53,10 @@ kind: Role
 metadata:
   name: prometheus-k8s
   namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx-monitoring
+    app.kubernetes.io/part-of: ingress-nginx
+    addonmanager.kubernetes.io/mode: Reconcile
 rules:
 - apiGroups:
   - ""
@@ -67,6 +76,10 @@ kind: RoleBinding
 metadata:
   name: prometheus-k8s
   namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx-monitoring
+    app.kubernetes.io/part-of: ingress-nginx
+    addonmanager.kubernetes.io/mode: Reconcile
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
