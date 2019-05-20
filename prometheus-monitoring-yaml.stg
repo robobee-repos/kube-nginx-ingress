@@ -1,5 +1,8 @@
 /*
  * 
+ * Optional:
+ * 
+ * vars.nginxIngressController.prometheus.enabled
  */
 
 prometheus-monitoring-yaml(parent, vars) ::= <<
@@ -24,7 +27,7 @@ spec:
 
 ---
 
-<if(vars.nginxIngressController.prometheus.enabled)>
+<if(vars.nginxIngressController.prometheus && vars.nginxIngressController.prometheus.enabled)>
 
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
